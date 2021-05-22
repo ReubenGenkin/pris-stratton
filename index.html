@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Weather</title>
+</head>
+
+<body>
+    <header class="fixed-top clearfix">
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <div class="row container-fluid" id="container">
+
+        <div class="column1 col-4">
+            <h2 class="search-header">Search for a City</h2>
+            <input type="text" aria-label="search" type="search" id="input-search">
+            <button type="submit" id="search">Search</button>
+            <button>Clear</button>
+            <div>
+                <h3 class="cities">Cities:</h3>
+                <ul id="cities-list"></ul>
+            </div>
+        </div>
+
+        <div class="column2 col-8">
+            <div class="row rw1">
+                <h3 class="row" id="temp">Temp:</h3>
+                <h3 class="row" id="wind">Wind:</h3>
+                <h3 class="row" id="humidity">Humidity:</h3>
+                <h3 class="row" id="uv-index">UV Index:</h3>
+            </div>
+            <div class="row rw2"></div>
+        </div>
+
+        <div class="row mt-2">
+            <h3 class="f-cast">Five Day Forcast:</h3>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./assets/js.js"></script>
+</body>
+
+</html>

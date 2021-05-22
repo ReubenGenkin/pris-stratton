@@ -1,0 +1,77 @@
+* {
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+    line-height: 1.5;
+}
+
+body {
+    margin: 0 16px;
+}
+
+header {
+    top: 0;
+    background-color: rgb(238, 238, 238);
+    z-index: 9999;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+
+}
+
+h1 {
+    margin: 40px;
+    text-align: center;
+}
+
+.search-header {
+    border-bottom: 1px solid black;
+    width: 80%;
+}
+
+#container {
+    margin-top: 150px;
+}
+
+.rw1 {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 8px;
+    background-color: rgb(248, 248, 248);
+}
+
+input {
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+input:focus {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+button {
+    border-radius: 5px;
+    box-shadow: none;
+    border: 1px solid black;
+    padding: 2px;
+    
+}
+
+button:hover {
+    background-color: rgb(223, 223, 223);
+}
+
+button:active {
+    background-color: black;
+    color: white;
+    transition: 0.1s linear;
+}
+
+.cities {
+    margin-top: 16px;
+    border-bottom: 1px solid black;
+    width: 25%;
+}
+
+.f-cast {
+    border-bottom: 1px solid black;
+    width: 22%;
+}
