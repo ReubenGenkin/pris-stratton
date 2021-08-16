@@ -1,45 +1,49 @@
 * {
-    font-family: 'Courier New', Courier, monospace, sans-serif;
+    font-family: 'helvetica', sans-serif;
     line-height: 1.5;
 }
 
 body {
-    margin: 0 16px;
+    margin: 0 48px;
 }
 
 header {
     top: 0;
     background-color: rgb(238, 238, 238);
     z-index: 9999;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
-
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    height: 100px;
 }
 
 h1 {
-    margin: 40px;
-    text-align: center;
+    margin: 24px 40px;
 }
 
-.search-header {
-    border-bottom: 1px solid black;
+.split {
+    border-right: 1px solid #333;
+}
+
+.page-header {
     width: 80%;
+    margin-bottom: 32px;
 }
 
 #container {
-    margin-top: 150px;
+    margin-top: 120px;
+    padding: 0;
 }
 
 .rw1 {
     border: 1px solid black;
     border-radius: 5px;
     padding: 8px;
-    background-color: rgb(248, 248, 248);
 }
 
 input {
-    margin: 8px 0;
+    margin: 8px 8px 0;
     border-radius: 5px;
     border: 1px solid black;
+    padding: 8px;
 }
 
 input:focus {
@@ -51,7 +55,7 @@ button {
     border-radius: 5px;
     box-shadow: none;
     border: 1px solid black;
-    padding: 2px;
+    padding: 8px;
     
 }
 
@@ -65,13 +69,71 @@ button:active {
     transition: 0.1s linear;
 }
 
-.cities {
-    margin-top: 16px;
-    border-bottom: 1px solid black;
-    width: 25%;
+.search-results {
+    margin-top: 32px;
 }
 
-.f-cast {
-    border-bottom: 1px solid black;
-    width: 22%;
+.cities {
+    margin-top: 8px;
+    margin-right: 16px;
+    display: inline-block;
+}
+
+.clear-button {
+    margin: 8px 0;
+}
+
+#cities-list {
+    list-style: none;
+}
+
+.forecast-div {
+    margin-top: 32px;
+    padding: 0;
+}
+
+.forecast-item {
+    margin-left: 12px;
+    font-size: 15px;
+    border: 1px solid black;
+}
+
+.five-day-item {
+    padding: 4px 0;
+}
+
+.left-header {
+    margin-bottom: 16px;
+}
+
+label {
+    margin-right: 8px;
+}
+
+.current-box {
+    margin-top: 20px;
+    width: 70%;
+}
+
+#uv-index {
+    margin-left: 2px;
+}
+
+.city-item {
+    padding: 8px;
+    margin-left: 8px;
+}
+
+.box-item {
+    padding: 8px 16px;
+}
+
+#icon {
+    display: inline;
+    height: 40px;
+    width: 32px;
+}
+
+.hide {
+    visibility: hidden;
 }

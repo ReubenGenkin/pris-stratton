@@ -13,34 +13,47 @@
 
 <body>
     <header class="fixed-top clearfix">
-        <h1>Weather Dashboard</h1>
+        <h1>Weather dashboard</h1>
     </header>
 
-    <div class="row container-fluid" id="container">
+    <div class="row " id="container">
+        <h2 class="page-header">Weather forecast</h2>
 
-        <div class="column1 col-4">
-            <h2 class="search-header">Search for a City</h2>
-            <input type="text" aria-label="search" type="search" id="input-search">
-            <button type="submit" id="search">Search</button>
-            <button>Clear</button>
-            <div>
-                <h3 class="cities">Cities:</h3>
-                <ul id="cities-list"></ul>
-            </div>
-        </div>
+        <div class="row header-div">
 
-        <div class="column2 col-8">
-            <div class="row rw1">
-                <h3 class="row" id="temp">Temp:</h3>
-                <h3 class="row" id="wind">Wind:</h3>
-                <h3 class="row" id="humidity">Humidity:</h3>
-                <h3 class="row" id="uv-index">UV Index:</h3>
+            <div class="column1 col-5 ">
+                <h3 class="left-header">Enter your location</h3>
+                <label>Search for a city</label>
+                <input type="text" aria-label="Search for a city" type="search" id="input-search">
+                <button type="submit" id="search">Search</button>
             </div>
-            <div class="row rw2"></div>
+
+            <div class="column2 col-7 hide">
+                
+                    <h3 class="row" id="weather-header">Current weather for</h3>
+                    <!-- <div>
+                    <img id="icon" />
+                </div> -->
+                <div class="row rw1 current-box">
+
+                    <span class="row box-item" id="temp">Temp:</span>
+                    <span class="row box-item" id="wind">Wind:</span>
+                    <span class="row box-item" id="humidity">Humidity:</span>
+                    <span class="row box-item" id="uv-index">UV Index:</span>
+                </div>
+
+            </div>
         </div>
 
         <div class="row mt-2">
-            <h3 class="f-cast">Five Day Forcast:</h3>
+            <div class="search-results col-5">
+                <h3 class="cities">Search results</h3>
+                <button class="clear-button" id="clear-button">Clear search results</button>
+                <ul id="cities-list"></ul>
+            </div>
+            <div class="col-7 forecast-div container row hide" id="forecast-div">
+                <h3 class="f-cast">Five day forecast</h3>
+            </div>
         </div>
 
     </div>
