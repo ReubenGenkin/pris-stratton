@@ -1,4 +1,3 @@
-
 var temp = $('#temp')
 var humidity = $('#humidity')
 var uvIndex = $('#uv-index')
@@ -10,8 +9,7 @@ var apiUrl = "";
 
 
 $('#search').click(function () {
-    
-    
+
     Object.defineProperty(String.prototype, 'capitalize', {
         value: function () {
             return this.charAt(0).toUpperCase() + this.slice(1);
@@ -19,15 +17,16 @@ $('#search').click(function () {
         writable: true,
         configurable: true
     });
-    citySearch = $('#input-search').val().capitalize();
 
+    citySearch = $('#input-search').val().capitalize();
     apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&appid=${apiKey}`;
 
     $('#input-search').val("");
-
+    $('div').removeClass("hide")
     addCities();
     weatherFetch();
     $('.forecast-item').remove()
+
 });
 
 $('#input-search').keypress(function (e) {
@@ -72,18 +71,39 @@ function getForecast(lat, lon) {
 
             var dailyData = data.daily;
             console.log(dailyData)
-            
-            for (i = 1; i < 6; i++) {
 
-                storeSet = localStorage.setItem("key" + i, JSON.stringify(dailyData[i]))
+            for (i = 0; i < 6; i++) {
+                storeSet = localStorage.setItem("key" + [i], JSON.stringify(dailyData[i]))
+                if (i == 0) {
+                    var currentDate = data.current.dt;
+                    
+                    var date = new Date(currentDate * 1000);
+                    console.log(date);
+                    const day = date.getDate();
+                    const month = date.getMonth() + 1;
+                    const year = date.getFullYear();
 
-                $('#forecast-div').append($('<div>',
-                    {
-                        id: "forecast-" + i,
-                        "class": 'forecast-item col-2 card'
-                    }).clone());
+                    var weatherIcon = data.current.weather[0].icon;
+                    var iconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`;
+
+                    $("#weather-header").text("");
+                    $("#weather-header").append(`Current weather for ${citySearch} ${month}/${day}/${year}`);
+                    $("#icon").attr("src", iconUrl);
+                    temp.text(`Temp: ${Math.floor(data.current.temp)}°F`);
+                    wind.text(`Wind Speed: ${(data.current.wind_speed)} MPH`);
+                    humidity.text(`Humidity: ${Math.floor(data.current.humidity)}%`);
+                    uvIndex.text(`UV Index: ${data.current.uvi}`)
+                    uvCheck(data);
+                } else {
+                    // storeSet = localStorage.setItem("key" + i, JSON.stringify(dailyData[i]))
+
+                    $('#forecast-div').append($('<div>',
+                        {
+                            id: "forecast-" + i,
+                            "class": 'forecast-item col-2 card'
+                        }).clone());
+                }
             }
-
             $('.forecast-item').each(function () {
                 var forecastItem = parseInt($(this).attr("id").split("-")[1])
                 getStore = JSON.parse(localStorage.getItem("key" + forecastItem))
@@ -97,33 +117,13 @@ function getForecast(lat, lon) {
                 var weatherIcon = getStore.weather[0].icon;
                 var iconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`;
 
-                $(this).append($('<span>', { id: "date", "class": "five-day-item"}).text(`Date ${month}/${day}/${year}`))
-                $(this).append($('<img>', { id: "icon", src: `${iconUrl}`, "class": "five-day-item"}))
-                $(this).append($('<span>', { id: "temp", "class": "five-day-item" }).text(`Temp ${getStore.temp.day}°F`))
-                $(this).append($('<span>', { id: "wind", "class": "five-day-item" }).text(`Wind ${getStore.wind_speed} MPH`))
-                $(this).append($('<span>', { id: "humidity", "class": "five-day-item" }).text(`Humidiy ${getStore.humidity}%`))
+                $(this).append($('<span>', { id: "date", "class": "five-day-item" }).text(`Date ${month}/${day}/${year}`))
+                $(this).append($('<img>', { id: "icon", src: `${iconUrl}`, "class": "five-day-item" }))
+                $(this).append($('<span>', { id: "temp", "class": "five-day-item" }).text(`Temp: ${Math.floor(getStore.temp.day)}°F`))
+                $(this).append($('<span>', { id: "wind", "class": "five-day-item" }).text(`Wind: ${Math.floor(getStore.wind_speed)} MPH`))
+                $(this).append($('<span>', { id: "humidity", "class": "five-day-item" }).text(`Humidiy: ${getStore.humidity}%`))
 
             })
-
-            var currentDate = data.current.dt;
-
-            var date = new Date(currentDate * 1000);
-            console.log(date);
-            const day = date.getDate();
-            const month = date.getMonth() + 1;
-            const year = date.getFullYear();
-
-            var weatherIcon = data.current.weather[0].icon;
-            var iconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`;
-
-            $("#weather-header").text("");
-            $("#weather-header").append(`Current weather for ${citySearch} ${month}/${day}/${year}`);
-            $("#icon").attr("src", iconUrl);
-            temp.text(`Temp: ${Math.floor(data.current.temp)}°F`);
-            wind.text(`Wind Speed: ${(data.current.wind_speed)} MPH`);
-            humidity.text(`Humidity: ${Math.floor(data.current.humidity)}%`);
-            uvIndex.text(`UV Index: ${data.current.uvi}`)
-            uvCheck(data);
 
         })
 };

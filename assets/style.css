@@ -99,7 +99,7 @@ button:active {
 }
 
 .five-day-item {
-    padding-top: 8px;
+    padding: 4px 0;
 }
 
 .left-header {
@@ -132,4 +132,8 @@ label {
     display: inline;
     height: 40px;
     width: 32px;
+}
+
+.hide {
+    visibility: hidden;
 }
